@@ -24,7 +24,8 @@ function Register() {
       });
 
       if (!response.ok) {
-        throw new Error('Registration failed. Please try again later.');
+        const data = await response.json();
+        throw new Error(data.message);
       }
 
       const data = await response.json();

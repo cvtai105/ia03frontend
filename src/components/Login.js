@@ -32,10 +32,8 @@ function Login() {
       });
 
       if (!response.ok) {
-        response.json().then((data) => {
-          console.log(data);
-        });
-        throw new Error('Login failed. Please check your credentials.');
+        const data = await response.json();
+        throw new Error(data.message);
       }
 
       const data = await response.json();
